@@ -27,7 +27,7 @@ const checkEmptyInputs = (selectorBtn, ...inputs) => {
                 if(input.value){
                     if(i == 0)swichFirstInput = true;
                     if(i == 1)swichSecondInput = true;
-                }else if(!input[0].value){
+                }else if(!input.value){
                     if(i == 0)swichFirstInput = false;
                     if(i == 1)swichSecondInput = false;
                 }
