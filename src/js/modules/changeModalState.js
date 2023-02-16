@@ -6,12 +6,15 @@ function changeModalState(state){
             windowWidth = document.querySelectorAll('#width'),
             windowHeight = document.querySelectorAll('#height'),
             windowType = document.querySelectorAll('#view_type'),
-            windowProfile = document.querySelectorAll('.checkbox');
+            windowProfile = document.querySelectorAll('.checkbox'),
+            windowName = document.querySelector('.popur-end-input-name'),
+            windowPhone = document.querySelector('.popur-end-input-phone');
 
     
     checkNumInput('#width');
     checkNumInput('#height');
     checkEmptyInputs('button[data-lockBtn-for-input]', windowWidth[0], windowHeight[0]);
+    checkEmptyInputs('[data-popur-end-btn]', windowName, windowPhone);
     chackEmptyChackbox('.popup_calc_profile_button');
 
 
@@ -52,8 +55,14 @@ function changeModalState(state){
                                     box.checked = true;
                                 }
                             });
+                            if(!Object.keys(state).includes('type')){
+                                state['type'] = 'tree';
+                            }
                         }else{
-                            state[name] = item.value;
+                            if(!Object.keys(state).includes('form')){
+                                state['form'] = 0;
+                            }
+                            state[name] = item.value;   
                         }
                         break;
 

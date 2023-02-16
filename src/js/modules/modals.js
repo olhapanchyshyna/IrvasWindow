@@ -74,8 +74,20 @@ const modal = () =>{
 
     function showModalByTime(modal,time){
         setTimeout(function(){
-            document.querySelector(modal).style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            let display,
+            scroll = scrollCalc();
+
+            document.querySelectorAll('[data-modal]').forEach(item =>{
+                if(getComputedStyle(item).display !== 'none'){
+                    display = 'block';
+                }
+            });
+            
+            if(!display){
+                document.querySelector(modal).style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.body.style.marginRight = `${scroll}px`;
+            }
         },time) ;
     }
     showModalByTime('.popup', 60000);
